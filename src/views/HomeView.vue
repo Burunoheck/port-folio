@@ -1,38 +1,38 @@
 <template>
-  <v-app id="pagi">
-    <v-container>
-      <v-app-bar
-        style="color: blueviolet"
-        class="transparent"
-        app
-        elevation="3"
-      >
-        <v-list-item>
-          <h1>Portfólio</h1>
+  <v-app>
+    <v-app-bar
+      style="color: blueviolet"
+      class="transparent"
+      app
+      elevation="3"
+    >
+      <v-list-item>
+        <h1>Portfólio</h1>
+      </v-list-item>
+      <v-list-item-group class="menu d-flex">
+        <v-divider vertical></v-divider>
+        <v-list-item link :to="{ path: '/' }">
+          <v-btn elevation="3" id="clicar"> Principal </v-btn>
         </v-list-item>
-        <v-list-item-group class="menu d-flex">
-          <v-divider vertical></v-divider>
-          <v-list-item link :to="{ path: '/treinos' }">
-            <v-btn id="clicar"> Principal </v-btn>
-          </v-list-item>
-          <v-divider vertical></v-divider>
-          <v-list-item link :to="{ path: '/treinos' }">
-            <v-btn id="clicar"> Biografia </v-btn>
-          </v-list-item>
-          <v-divider vertical></v-divider>
-          <v-list-item link :to="{ path: '/treinos' }">
-            <v-btn id="clicar"> Portifólio </v-btn>
-          </v-list-item>
-          <v-divider vertical></v-divider>
-          <v-list-item link :to="{ path: '/treinos' }">
-            <v-btn id="clicar"> Contato </v-btn>
-          </v-list-item>
-        </v-list-item-group>
-      </v-app-bar>
+        <v-divider vertical></v-divider>
+        <v-list-item link :to="{ path: '/bio' }">
+          <v-btn elevation="3" id="clicar"> Biografia </v-btn>
+        </v-list-item>
+        <v-divider vertical></v-divider>
+        <v-list-item link :to="{ path: '/portfolio' }">
+          <v-btn elevation="3" id="clicar"> Portifólio </v-btn>
+        </v-list-item>
+        <v-divider vertical></v-divider>
+        <v-list-item link :to="{ path: '/contato' }">
+          <v-btn elevation="3" id="clicar"> Contato </v-btn>
+        </v-list-item>
+      </v-list-item-group>
+    </v-app-bar>
+    <v-container fluid id="pagi">
+      <v-main>
+        <router-view></router-view>
+      </v-main>
     </v-container>
-    <v-main>
-      <router-view></router-view>
-    </v-main>
   </v-app>
 </template>
 
