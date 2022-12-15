@@ -1,15 +1,26 @@
 <template>
   <v-app>
-    <v-app-bar
-      style="color: blueviolet"
-      class="transparent"
-      app
-      elevation="3"
-    >
-      <v-list-item>
-        <h1>Portfólio</h1>
-      </v-list-item>
+    <v-app-bar style="color: blueviolet" class="transparent" app elevation="3">
       <v-list-item-group class="menu d-flex">
+        <v-list-item>
+          <h1>Portfólio</h1>
+        </v-list-item>
+        <v-list-item flat>
+          <v-switch
+            v-model="$vuetify.theme.dark"
+            inset
+            persistent-hint
+          ></v-switch>
+        </v-list-item>
+      </v-list-item-group>
+      <v-list-item-group
+        class="menu d-flex"
+        style="
+        justify-content: flex-end;
+          align-items: flex-end;
+          padding-left: 40vw;
+        "
+      >
         <v-divider vertical></v-divider>
         <v-list-item link :to="{ path: '/' }">
           <v-btn elevation="3" id="clicar"> Principal </v-btn>
@@ -50,5 +61,8 @@ export default {};
     hsla(217, 100%, 50%, 1) 0%,
     hsla(186, 100%, 69%, 1) 100%
   );
+}
+#pagin {
+  background-color: indigo;
 }
 </style>
