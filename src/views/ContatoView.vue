@@ -8,82 +8,112 @@
             <v-container class="transparent">
               <v-row>
                 <v-col>
-                  <h1 class="h1">Cadastro</h1>
+                  <h1 class="h1">Contato</h1>
                 </v-col>
               </v-row>
               <v-row></v-row>
               <v-divider></v-divider>
               <v-divider></v-divider>
               <v-divider class="mb-8"></v-divider>
-              <v-row elevation="3" class="mx-auto">
-                <v-col>
-                  <v-form>
-                    <v-text-field
-                      outlined
-                      label="Nome de Usuário"
-                      placeholder="Nome de Usuário"
-                    ></v-text-field>
-                    <v-text-field
-                      outlined
-                      label="Nome"
-                      placeholder="Nome"
-                    ></v-text-field>
-                    <v-text-field
-                      outlined
-                      label="Sobrenome"
-                      placeholder="Sobrenome"
-                    ></v-text-field>
-                    <v-text-field
-                      outlined
-                      label="E-mail"
-                      placeholder="usuario@gmail.com"
-                    ></v-text-field>
-                    <v-text-field outlined label="Senha" placeholder="Senha">
-                    </v-text-field>
-                    <v-divider></v-divider>
-                    <v-divider></v-divider>
-                    <v-divider class="mb-8"></v-divider>
-                    <v-btn class="mb-4" height="50px">Cadastrar</v-btn>
-                  </v-form>
-                </v-col>
-              </v-row>
               <v-row
+                elevation="3"
+                class="mx-auto"
                 style="
-                  justify-content: center;
                   align-items: center;
+                  justify-content: center;
                   display: flex;
                 "
               >
-                <v-col>
-                  <v-row>
-                    <v-card
+                <v-form>
+                  <v-col>
+                    <v-row>
+                      <v-text-field
+                        outlined
+                        style="max-width: 45%"
+                        label="Nome"
+                        placeholder="Nome"
+                      ></v-text-field>
+                      <v-spacer></v-spacer>
+                      <v-text-field
+                        style="max-width: 45%"
+                        outlined
+                        label="Sobrenome"
+                        placeholder="Sobrenome"
+                      ></v-text-field>
+                    </v-row>
+                  </v-col>
+                  <v-col>
+                    <v-row>
+                      <v-text-field
+                        outlined
+                        style="max-width: 45%"
+                        label="E-mail"
+                        placeholder="E-mail"
+                      ></v-text-field>
+                      <v-spacer></v-spacer>
+                      <v-text-field
+                        style="max-width: 45%"
+                        outlined
+                        label="Contato"
+                        placeholder="Contato"
+                      ></v-text-field>
+                    </v-row>
+                  </v-col>
+                  <v-col
+                    style="
+                      justify-content: center;
+                      display: flex;
+                      align-items: center;
+                    "
+                  >
+                    <v-text-field
+                      style="max-width: 50%"
+                      outlined
+                      label="Caixa em branco"
+                      placeholder="Caixa em branco"
+                    >
+                    </v-text-field>
+                  </v-col>
+                  <v-col>
+                    <v-item-group
                       style="
-                        max-width: 33%;
-                        max-height: 33%;
+                        justify-content: center;
+                        align-items: center;
+                        display: flex;
                       "
                     >
-                      <v-text>
-                        vitae nulla varius consectetur lacus massa, eu fusce
-                        sagittis eu nulla accumsan, varius habitant volutpat
-                        ante.
-                      </v-text>
-                    </v-card>
-                    <v-card
-                      style="
-                      max-width: 32%;
-                      max-height: 32%;
-                      "
-                    >
-                      <v-text>
-                        Quis habitant sagittis vulputate molestie cubilia
-                        consectetur aliquam proin eu iaculis ut, accumsan fames
-                        velit eget aliquam himenaeos facilisis erat leo
-                        curabitur, blandit fusce mattis laoreet luctus cubilia
-                        hac auctor elit accumsan.
-                      </v-text>
-                    </v-card>
-                  </v-row>
-                </v-col>
+                      <template v-for="(task, i) in tasks">
+                        <template>
+                          <v-list-item :key="`${i}-${task.text}`">
+                            <v-checkbox
+                              style="
+                                background-color: hsl(186, 80%, 93%, 0.2);
+                                border-radius: 15%;
+                                padding-left: 1vh;
+                                padding-right: 1vh;
+                                padding-top: 1vh;
+                              "
+                              v-model="task.done"
+                              :color="(task.done && 'purple') || 'white'"
+                            >
+                              <template v-slot:label>
+                                <div
+                                  :class="
+                                    (task.done && 'purple--text') || '--text'
+                                  "
+                                  v-text="task.text"
+                                ></div>
+                              </template>
+                            </v-checkbox>
+                          </v-list-item>
+                        </template>
+                      </template>
+                    </v-item-group>
+                  </v-col>
+                  <v-col>
+                    <v-btn height="50px">Aplicar</v-btn>
+                  </v-col>
+                </v-form>
               </v-row>
             </v-container>
           </v-col>
@@ -94,7 +124,33 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data: () => ({
+    tasks: [
+      {
+        done: false,
+        text: "Html",
+      },
+      {
+        done: false,
+        text: "Css",
+      },
+      {
+        done: false,
+        text: "VueJS",
+      },
+      {
+        model: null,
+      },
+    ],
+  }),
+
+  computed: {
+    completedTasks() {
+      return this.tasks.filter((task) => task.done).length;
+    },
+  },
+};
 </script>
 
 <style></style>

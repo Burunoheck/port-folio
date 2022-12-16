@@ -6,7 +6,7 @@
         <v-row style="justify-content:center; align-items:center; display:flex;">
           <v-col>
             <v-card
-              elevation="6"
+              hover
               style="
                 padding: 3%;
                 margin: 5vh;
@@ -31,7 +31,7 @@
             </v-card>
             <v-row>
               <v-card
-              elevation="6"
+              hover
                 style="
                 padding: 3%;
                 margin: 5vh;
@@ -49,7 +49,7 @@
                 </v-text>
               </v-card>
               <v-card
-              elevation="6"
+              hover
                 style="
                 padding: 3%;
                 margin: 5vh;

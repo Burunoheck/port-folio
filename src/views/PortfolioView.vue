@@ -58,16 +58,6 @@
             style="background-color: transparent"
           >
             <v-slide-group class="pa-4" center-active show-arrows>
-              <v-slide-item v-for="n in 5" :key="n">
-                <v-card
-                  hover
-                  class="ma-4"
-                  height="200"
-                  width="100"
-                  style="background-color: darkslategray"
-                >
-                </v-card>
-              </v-slide-item>
               <v-slide-item
                 v-for="n in 15"
                 :key="n"
