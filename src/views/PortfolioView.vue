@@ -51,24 +51,44 @@
           </v-card>
         </v-container>
         <v-container>
-          <v-sheet class="mx-auto" elevation="8" max-width="80vh" style="background-color:transparent">
-            <v-slide-group
-              class="pa-4"
-              center-active
-              show-arrows
-            >
-              <v-slide-item
-                v-for="n in 5"
-                :key="n"
-              >
+          <v-sheet
+            class="mx-auto"
+            elevation="8"
+            max-width="80vh"
+            style="background-color: transparent"
+          >
+            <v-slide-group class="pa-4" center-active show-arrows>
+              <v-slide-item v-for="n in 5" :key="n">
                 <v-card
                   hover
                   class="ma-4"
                   height="200"
                   width="100"
-                  style="background-color:darkslategray"
-                  v-text="aaa"
+                  style="background-color: darkslategray"
                 >
+                </v-card>
+              </v-slide-item>
+              <v-slide-item
+                v-for="n in 15"
+                :key="n"
+                v-slot="{ active, toggle }"
+              >
+                <v-card
+                  :color="active ? undefined : 'red'"
+                  class="ma-4"
+                  height="200"
+                  width="100"
+                  hover
+                  @click="toggle"
+                >
+                  <v-scale-transition>
+                    <v-text
+                      v-if="active"
+                      color="blue"
+                      title="tome"
+                      style="color: black"
+                    ></v-text>
+                  </v-scale-transition>
                 </v-card>
               </v-slide-item>
             </v-slide-group>
