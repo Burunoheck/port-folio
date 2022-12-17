@@ -7,6 +7,7 @@
         </v-list-item>
         <v-list-item flat>
           <v-switch
+            onclick="YoFunt()"
             v-model="$vuetify.theme.dark"
             inset
             persistent-hint
@@ -16,7 +17,7 @@
       <v-list-item-group
         class="menu d-flex"
         style="
-        justify-content: flex-end;
+          justify-content: flex-end;
           align-items: flex-end;
           padding-left: 40vw;
         "
@@ -48,7 +49,12 @@
 </template>
 
 <script>
-export default {};
+export default {
+  YoFunt() {
+    var element = document.pagi;
+    element.classList.toggle("dark-mode");
+  },
+};
 </script>
 
 <style>
@@ -62,7 +68,7 @@ export default {};
     hsla(186, 100%, 69%, 1) 100%
   );
 }
-#pagin {
+.dark-mode {
   background-color: indigo;
 }
 </style>

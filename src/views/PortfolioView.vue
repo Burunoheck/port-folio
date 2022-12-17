@@ -50,40 +50,55 @@
             </v-item-group>
           </v-card>
         </v-container>
-        <v-container>
-          <v-sheet
-            class="mx-auto"
-            elevation="8"
-            max-width="80vh"
-            style="background-color: transparent"
-          >
-            <v-slide-group class="pa-4" center-active show-arrows>
-              <v-slide-item
-                v-for="n in 15"
-                :key="n"
-                v-slot="{ active, toggle }"
-              >
-                <v-card
-                  :color="active ? undefined : 'red'"
-                  class="ma-4"
-                  height="200"
-                  width="100"
-                  hover
-                  @click="toggle"
-                >
-                  <v-scale-transition>
-                    <v-text
-                      v-if="active"
-                      color="blue"
-                      title="tome"
-                      style="color: black"
-                    ></v-text>
-                  </v-scale-transition>
-                </v-card>
+        <template>
+          <v-container class="pa-4 text-center">
+            <v-slide-group>
+              <v-slide-item>
+                <v-row style="align: center; justify:center">
+                  <template v-for="(item, i) in items">
+                    <v-col :key="i" cols="12" md="4">
+                      <v-hover v-slot="{ hover }">
+                        <v-card style="background-color: purple">
+                          <v-img
+                            :src="item.img"
+                            height="225px"
+                            :elevation="hover ? 12 : 2"
+                            :class="{ 'on-hover': hover }"
+                            id="opacidade"
+                          >
+                            <v-card-title class="text-h6 black--text">
+                              <v-row
+                                class="fill-height flex-column"
+                                justify="space-between"
+                              >
+                                <p class="mt-4 subheading text-left">
+                                  {{ item.title }}
+                                </p>
+
+                                <div>
+                                  <p
+                                    class="ma-0 text-body-1 font-weight-bold font-italic text-left"
+                                  >
+                                    {{ item.text }}
+                                  </p>
+                                  <p
+                                    class="text-caption font-weight-medium font-italic text-left"
+                                  >
+                                    {{ item.subtext }}
+                                  </p>
+                                </div>
+                              </v-row>
+                            </v-card-title>
+                          </v-img>
+                        </v-card>
+                      </v-hover>
+                    </v-col>
+                  </template>
+                </v-row>
               </v-slide-item>
             </v-slide-group>
-          </v-sheet>
-        </v-container>
+          </v-container>
+        </template>
       </v-container>
     </v-main>
   </v-app>
@@ -92,6 +107,27 @@
 <script>
 export default {
   data: () => ({
+    items: [
+      {
+        title: "Imagem bonita uaua",
+        text: `frase que motivaria qualquer um`,
+        subtext: "Solução pra felicidade infinita 2.0",
+        img: "https://picsum.photos/id/12/500/300",
+      },
+      {
+        title: "Parece que tá funcionando :)",
+        text: "Foto bonita né",
+        subtext: "Uma frase fofinha combinaria aqui",
+        img: "https://picsum.photos/id/14/500/300",
+      },
+      {
+        title: "Oi sor, tudo certo?",
+        text: "Dialogo muito legal aqui *imagine*",
+        subtext:
+          "Muito legal essa preda.    *ps: alterei a imagem mas era uma de preda",
+        img: "https://picsum.photos/id/500/300",
+      },
+    ],
     tasks: [
       {
         done: false,
@@ -119,4 +155,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+#opacidade:not(.on-hover) {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+</style>
